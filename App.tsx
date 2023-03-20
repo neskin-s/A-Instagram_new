@@ -11,8 +11,8 @@ const App = () => {
       {/* <HomeScreen /> */}
       {/* <CommentsScreen /> */}
       {/* <ProfileScreen /> */}
-      <EditProfileScreen />
-      {/* <PostUploadScreen /> */}
+      {/* <EditProfileScreen /> */}
+      <PostUploadScreen />
     </View>
   );
 };

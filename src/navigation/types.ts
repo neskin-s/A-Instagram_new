@@ -54,3 +54,8 @@ export type ProfileNavigationProp = NativeStackNavigationProp<
   ProfileStackNavigatorParamList,
   'Profile'
 >;
+
+export type SearchTabNavigatorParamList = {
+  Users: undefined;
+  Posts: undefined;
+};

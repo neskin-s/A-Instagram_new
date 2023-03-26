@@ -2,13 +2,14 @@ import {useNavigation} from '@react-navigation/native';
 import {Image, Text, View} from 'react-native';
 import user from '../../assets/data/user.json';
 import Button from '../../components/Button';
+import {ProfileNavigationProp} from '../../navigation/types';
 import styles from './styles';
 
 const ProfileHeader = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<ProfileNavigationProp>();
 
   const navigateToEdit = () => {
-    navigation.navigate('Edit profile');
+    navigation.navigate('Edit Profile');
   };
   return (
     <View style={styles.root}>

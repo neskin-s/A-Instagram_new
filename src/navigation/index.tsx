@@ -3,8 +3,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import CommentsScreen from '../screens/CommentsScreen';
 
 import BottomTabNavigator from './BottomTabNavigator';
+import {RootNavigatorParamList} from './types';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootNavigatorParamList>();
 
 const Navigation = () => {
   return (

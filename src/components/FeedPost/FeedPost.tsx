@@ -1,19 +1,20 @@
 import {Image, Text, View, Pressable} from 'react-native';
-import {ParamListBase, useNavigation} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
+import {useState} from 'react';
+import {FeedNavigationProp} from '../../navigation/types';
 
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
+
 import colors from '../../theme/colors';
 import styles from './styles';
 import Comment from '../Comment';
 import {IPost} from '../../types/models';
-import {useState} from 'react';
 import DoublePressable from '../DoublePressable';
 import Carousel from '../Carousel';
 import VideoPlayer from '../VideoPlayer';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 interface IFeedPost {
   post: IPost;
@@ -23,7 +24,7 @@ interface IFeedPost {
 const FeedPost = ({post, isVisible}: IFeedPost) => {
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
-  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+  const navigation = useNavigation<FeedNavigationProp>();
 
   const toggleDescriptionExpanded = () => {
     setIsDescriptionExpanded(v => !v);
@@ -34,7 +35,7 @@ const FeedPost = ({post, isVisible}: IFeedPost) => {
   };
 
   const navigateToUser = () => {
-    navigation.navigate('UserProfile', {userID: post.user.id});
+    navigation.navigate('UserProfile', {userId: post.user.id});
   };
 
   const navigateToComment = () => {

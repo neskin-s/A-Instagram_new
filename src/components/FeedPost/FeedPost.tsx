@@ -37,6 +37,10 @@ const FeedPost = ({post, isVisible}: IFeedPost) => {
     navigation.navigate('UserProfile', {userID: post.user.id});
   };
 
+  const navigateToComment = () => {
+    navigation.navigate('Comments', {postId: post.id});
+  };
+
   let content = null;
   if (post.image) {
     content = (
@@ -127,7 +131,9 @@ const FeedPost = ({post, isVisible}: IFeedPost) => {
         </Text>
 
         {/* Comments */}
-        <Text>View all {post.nofComments} comments</Text>
+        <Text onPress={navigateToComment}>
+          View all {post.nofComments} comments
+        </Text>
         {post.comments.map(comment => (
           <Comment comment={comment} key={comment.id} />
         ))}

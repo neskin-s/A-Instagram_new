@@ -1,9 +1,15 @@
+import {useNavigation} from '@react-navigation/native';
 import {Image, Text, View} from 'react-native';
 import user from '../../assets/data/user.json';
 import Button from '../../components/Button';
 import styles from './styles';
 
 const ProfileHeader = () => {
+  const navigation = useNavigation();
+
+  const navigateToEdit = () => {
+    navigation.navigate('Edit profile');
+  };
   return (
     <View style={styles.root}>
       <View style={styles.header}>
@@ -27,7 +33,7 @@ const ProfileHeader = () => {
       <Text style={styles.name}>{user.name}</Text>
       <Text>{user.bio}</Text>
       <View style={{flexDirection: 'row'}}>
-        <Button text="Edit Profile" onPress={() => console.log('edit pr')} />
+        <Button text="Edit Profile" onPress={navigateToEdit} />
         <Button
           text="Another Profile"
           onPress={() => console.log('another pr')}

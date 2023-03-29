@@ -3,6 +3,7 @@ import {Image, Text, View} from 'react-native';
 import user from '../../assets/data/user.json';
 import Button from '../../components/Button';
 import {ProfileNavigationProp} from '../../navigation/types';
+import {signOut} from '../AuthScreen/AuthScreen';
 import styles from './styles';
 
 const ProfileHeader = () => {
@@ -35,10 +36,7 @@ const ProfileHeader = () => {
       <Text>{user.bio}</Text>
       <View style={{flexDirection: 'row'}}>
         <Button text="Edit Profile" onPress={navigateToEdit} />
-        <Button
-          text="Another Profile"
-          onPress={() => console.log('another pr')}
-        />
+        <Button text="Go back" onPress={signOut} />
       </View>
     </View>
   );

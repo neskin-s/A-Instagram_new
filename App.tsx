@@ -1,7 +1,8 @@
-import AuthScreen from './src/screens/AuthScreen';
+import Navigation from './src/navigation';
+// import AuthScreen from './src/screens/AuthScreen';
 
 const App = () => {
-  return <AuthScreen />;
+  return <Navigation />;
 };
 
 export default App;

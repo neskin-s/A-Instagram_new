@@ -8,7 +8,7 @@ import PostUploadScreen from '../screens/PostUploadScreen';
 import colors from '../theme/colors';
 import HomeStackNavigator from './HomeStackNavigator';
 import ProfileStackNavigator from './ProfileStackNavigator';
-import {BottomTabNavigatorParamList} from './types';
+import {BottomTabNavigatorParamList} from '../types/navigation';
 import SearchTabNavigator from './SearchTabNavigator';
 
 const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>();

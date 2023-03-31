@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, Image, TextInput} from 'react-native';
+import {View, Text, StyleSheet, Image, TextInput, Alert} from 'react-native';
 import {useForm, Control, Controller} from 'react-hook-form';
 import {Asset, launchImageLibrary} from 'react-native-image-picker';
 
@@ -7,6 +7,8 @@ import {IUser} from '../../types/models';
 import colors from '../../theme/colors';
 import fonts from '../../theme/fonts';
 import {useState} from 'react';
+import auth from '@react-native-firebase/auth';
+import {useNavigation} from '@react-navigation/native';
 
 const URL_REGEX =
   /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/i;
@@ -63,6 +65,7 @@ const CustomInput = ({
 
 const EditProfileScreen = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<null | Asset>(null);
+  const navigation = useNavigation();
 
   const {
     control,
@@ -76,8 +79,24 @@ const EditProfileScreen = () => {
     },
   });
 
-  const onSubmit = (data: IEditableUser) => {
+  const onSubmit = async (data: IEditableUser) => {
     console.log(data);
+    const update = {
+      displayName: data.username,
+    };
+    const user = auth().currentUser;
+
+    try {
+      if (user) {
+        await user.updateProfile(update);
+        // await user.reload();
+        if (navigation.canGoBack()) {
+          navigation.goBack();
+        }
+      }
+    } catch (e) {
+      Alert.alert('Oops', (e as Error).message);
+    }
   };
   // console.log(errors);
 
@@ -126,7 +145,7 @@ const EditProfileScreen = () => {
         control={control}
         label="Website"
         rules={{
-          required: 'Website is required',
+          // required: 'Website is required',
           pattern: {
             value: URL_REGEX,
             message: 'Invalid url',

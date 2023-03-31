@@ -1,7 +1,7 @@
 import {Image, Text, View, Pressable} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useState} from 'react';
-import {FeedNavigationProp} from '../../navigation/types';
+import {FeedNavigationProp} from '../../types/navigation';
 
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';

@@ -6,6 +6,7 @@ export interface IPost {
   video?: string;
   description: string;
   user: IUser;
+  userID: string;
   nofComments: number;
   nofLikes: number;
   comments: IComment[];
